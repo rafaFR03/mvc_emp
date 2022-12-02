@@ -20,7 +20,7 @@ public class ArregloEmpleado {
         Empleado tmp = new Empleado(codigo, nombre, sueldo);
         datos[numEmp] = tmp;
         numEmp++;
-        
+
         return 0;
     }
 
@@ -31,14 +31,34 @@ public class ArregloEmpleado {
         }
         datos = tmp;
     }
-    
-    public String obtenerDatos(){
-        String lista = ""; 
+
+    public String obtenerDatos() {
+        String lista = "";
 
         for (int i = 0; i < numEmp; i++) {
             lista += datos[i].getCodigo() + " - " + datos[i].getNombre() + " - " + datos[i].getSueldo() + "\n";
         }
         return lista;
+    }
+
+    public String obtenerDatosEmpleado(long codigo) {
+        String lista = "-DATOS-\n";
+        for (int i = 0; i < numEmp; i++) {
+            lista += "Codigo: " + datos[i].getCodigo()
+                    + "\nNombre: " + datos[i].getNombre()
+                    + "\nSueldo: " + datos[i].getSueldo();
+
+        }
+        return lista;
+    }
+
+    public int buscarPos(long codigo) {
+        for (int i = 0; i < numEmp; i++) {
+            if (codigo == datos[i].getCodigo()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

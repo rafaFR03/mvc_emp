@@ -22,8 +22,8 @@ public class PrgEmpleado {
         menu += """
                 [1] Ingresar datos
                 [2] Mostrar datos
-                [3] Ordenar
-                [4] Mostrar datos empleado
+                [3] Mostrar datos del empleado
+                [4] Ordenar
                 [5] Modificar
                 [0] Salir
                 """;
@@ -36,6 +36,10 @@ public class PrgEmpleado {
                     break;
                 case 2:
                     mostrarDatos();
+                    break;
+                case 3:
+                    mostrarDatosEmpleado();
+                    break;
                 default:
                     throw new AssertionError();
             }
@@ -63,6 +67,19 @@ public class PrgEmpleado {
             JOptionPane.showMessageDialog(null, mostrar, "Datos", 0);
         }else{
             JOptionPane.showMessageDialog(null, "No hay datos que mostrar");
+        }
+    }
+    
+    public void mostrarDatosEmpleado(){  
+        
+        long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingrese el codigo del empleado que desee buscar"));
+        String mostrar = objArray.obtenerDatosEmpleado(codigo);
+        
+        
+        if (mostrar != "") {
+            JOptionPane.showMessageDialog(null, mostrar);
+        }else{
+            JOptionPane.showMessageDialog(null, "El codigo no se encuentra registrado");
         }
     }
 }
