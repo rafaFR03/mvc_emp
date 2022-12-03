@@ -40,6 +40,8 @@ public class PrgEmpleado {
                 case 3:
                     mostrarDatosEmpleado();
                     break;
+                case 0:
+                    break;
                 default:
                     throw new AssertionError();
             }
@@ -70,16 +72,25 @@ public class PrgEmpleado {
         }
     }
     
-    public void mostrarDatosEmpleado(){  
-        
+    public void mostrarDatosEmpleado(){      
         long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingrese el codigo del empleado que desee buscar"));
-        String mostrar = objArray.obtenerDatosEmpleado(codigo);
-        
-        
+        String mostrar = objArray.obtenerDatosEmpleado(codigo);        
         if (mostrar != "") {
             JOptionPane.showMessageDialog(null, mostrar);
         }else{
             JOptionPane.showMessageDialog(null, "El codigo no se encuentra registrado");
         }
+    }
+    
+    public void modificarDatos(){
+        
+    }
+    
+    public void eliminarDatos(){
+        
+    }
+    
+    public void ordenarDatos(){
+        
     }
 }

@@ -43,13 +43,36 @@ public class ArregloEmpleado {
 
     public String obtenerDatosEmpleado(long codigo) {
         String lista = "-DATOS-\n";
-        for (int i = 0; i < numEmp; i++) {
-            lista += "Codigo: " + datos[i].getCodigo()
-                    + "\nNombre: " + datos[i].getNombre()
-                    + "\nSueldo: " + datos[i].getSueldo();
+        int pos = buscarPos(codigo);
+        lista += "Codigo: " + datos[pos].getCodigo()
+                + "\nNombre: " + datos[pos].getNombre()
+                + "\nSueldo: " + datos[pos].getSueldo();
 
-        }
         return lista;
+    }
+
+    public void modificarDatos(int pos, String nombre, double sueldo) {
+        datos[pos].setNombre(nombre);
+        datos[pos].setCodigo(pos);
+    }
+
+    public void eliminarDatos(long codigo) {
+        int pos = buscarPos(codigo);
+        for (int i = pos; i < numEmp - 1; i++) {
+            datos[i] = datos[i + 1];
+        }
+    }
+
+    public void ordenarDatos() {
+        for (int i = 0; i < numEmp - 1; i++) {
+            for (int j = i + 1; j < numEmp; j++) {
+                if (datos[i].getCodigo() > datos[j].getCodigo()) {
+                    Empleado tmp = datos[i];
+                    datos[i] = datos[j];
+                    datos[i] = tmp;
+                }
+            }
+        }
     }
 
     public int buscarPos(long codigo) {
