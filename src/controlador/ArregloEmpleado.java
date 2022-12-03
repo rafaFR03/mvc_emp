@@ -51,7 +51,9 @@ public class ArregloEmpleado {
         return lista;
     }
 
-    public void modificarDatos(int pos, String nombre, double sueldo) {
+    public void modificarDatos(long codigo, String nombre, double sueldo) {
+        int pos = buscarPos(codigo);
+
         datos[pos].setNombre(nombre);
         datos[pos].setCodigo(pos);
     }
@@ -82,6 +84,26 @@ public class ArregloEmpleado {
             }
         }
         return -1;
+    }
+
+    public void minPromedioEmpleado() {
+        
+    }
+
+    public void maxPromedioEmpleado() {
+
+    }
+
+    public double promedio(Empleado datos[]) {
+        String lista = "";
+        double acum = 0;
+        double prom = 0;
+        int cont = 0;
+        for (int i = 0; i < numEmp; i++) {
+            acum += datos[i].getSueldo();
+        }
+        prom = acum / numEmp;
+        return prom;
     }
 
 }

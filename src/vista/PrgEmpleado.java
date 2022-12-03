@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ArregloEmpleado;
 import javax.swing.JOptionPane;
+import org.w3c.dom.events.Event;
 
 public class PrgEmpleado {
 
@@ -15,8 +16,8 @@ public class PrgEmpleado {
         PrgEmpleado app = new PrgEmpleado();
         app.menu();
     }
-    
-    public void menu(){
+
+    public void menu() {
         int op = 0;
         String menu = "--MENU--\n";
         menu += """
@@ -27,7 +28,7 @@ public class PrgEmpleado {
                 [5] Modificar
                 [0] Salir
                 """;
-        
+
         do {
             op = Integer.parseInt(JOptionPane.showInputDialog(menu));
             switch (op) {
@@ -51,7 +52,7 @@ public class PrgEmpleado {
     public void ingresarDatos() {
         int op = 0;
         do {
-            
+
             long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingresar el codigo: "));
             String nombre = JOptionPane.showInputDialog("Ingresar el nombre: ");
             double sueldo = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el sueldo: "));
@@ -61,36 +62,49 @@ public class PrgEmpleado {
         } while (op == JOptionPane.YES_OPTION);
 
     }
-    
-    public void mostrarDatos(){
+
+    public void mostrarDatos() {
         String mostrar = objArray.obtenerDatos();
         if (mostrar != "") {
             //JOptionPane.showMessageDialog(null, mostrar);
             JOptionPane.showMessageDialog(null, mostrar, "Datos", 0);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No hay datos que mostrar");
         }
     }
-    
-    public void mostrarDatosEmpleado(){      
+
+    public void mostrarDatosEmpleado() {
         long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingrese el codigo del empleado que desee buscar"));
-        String mostrar = objArray.obtenerDatosEmpleado(codigo);        
+        String mostrar = objArray.obtenerDatosEmpleado(codigo);
         if (mostrar != "") {
             JOptionPane.showMessageDialog(null, mostrar);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "El codigo no se encuentra registrado");
         }
     }
-    
-    public void modificarDatos(){
-        
+
+    public void modificarDatos() {
+        long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingresar el codigo del empleado cuyos datos deseas modificar"));
+        int op = 0;
+        op = JOptionPane.showConfirmDialog(null, "Esta seguro de modificar los datos de " + objArray.obtenerDatosEmpleado(codigo), "Pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (op == JOptionPane.YES_OPTION) {
+            String nombre = JOptionPane.showInputDialog("Ingresa el nuevo nombre");
+            double sueldo = Double.parseDouble("Ingresa el nuevo sueldo: ");
+            objArray.modificarDatos(codigo, nombre, sueldo);
+        }
+
     }
-    
-    public void eliminarDatos(){
-        
+
+    public void eliminarDatos() {
+        long codigo = Long.parseLong(JOptionPane.showInputDialog("Ingresar el codigo del empleado cuyos datos deseas eliminar"));
+        int op = 0;
+        op = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar los datos de " + objArray.obtenerDatosEmpleado(codigo), "Pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (op == JOptionPane.YES_OPTION) {
+            objArray.eliminarDatos(codigo);
+        }
     }
-    
-    public void ordenarDatos(){
-        
+
+    public void ordenarDatos() {
+        objArray.ordenarDatos();
     }
 }
