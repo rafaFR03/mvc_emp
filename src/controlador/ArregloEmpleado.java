@@ -86,12 +86,32 @@ public class ArregloEmpleado {
         return -1;
     }
 
-    public void minPromedioEmpleado() {
-        
+    public String minPromedioEmpleado() {
+        String lista = "Empleados que ganan menos que el promedio sueldo\n";
+        int cont = 0;
+        double prom = promedio(datos);
+        for (int i = 0; i < numEmp; i++) {
+            if (datos[i].getSueldo() < prom) {
+                 lista += datos[i].getNombre()  + " " + datos[i].getSueldo() + "\n";
+                 cont++;
+            }
+        }
+        lista += "Total: " + cont;
+        return lista;
     }
 
-    public void maxPromedioEmpleado() {
-
+    public String maxPromedioEmpleado() {
+         String lista = "Empleados que ganas por encima del promedio\n";
+         int cont = 0;
+         double prom = promedio(datos);
+         for (int i = 0; i < numEmp; i++) {
+             if (datos[i].getSueldo() > prom) {
+                 lista += datos[i].getNombre() + " " + datos[i].getSueldo() + "\n";
+                 cont++;
+             }
+        }
+         lista += "Total: " + cont;
+         return lista;
     }
 
     public double promedio(Empleado datos[]) {

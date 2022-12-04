@@ -2,7 +2,7 @@ package vista;
 
 import controlador.ArregloEmpleado;
 import javax.swing.JOptionPane;
-import org.w3c.dom.events.Event;
+
 
 public class PrgEmpleado {
 
@@ -26,6 +26,9 @@ public class PrgEmpleado {
                 [3] Mostrar datos del empleado
                 [4] Ordenar
                 [5] Modificar
+                [6] Eliminar
+                [7] Sueldos mayores que el promedio
+                [8] Sueldos menores que el promedio
                 [0] Salir
                 """;
 
@@ -41,6 +44,21 @@ public class PrgEmpleado {
                 case 3:
                     mostrarDatosEmpleado();
                     break;
+                case 4: 
+                    ordenarDatos();
+                    mostrarDatosEmpleado();
+                    break;
+                case 5:
+                    modificarDatos();
+                    break;
+                case 6:
+                    eliminarDatos();
+                    break;
+                case 7:
+                    maxPromedioSueldo();
+                    break;
+                case 8:
+                    minPromedioSueldo();
                 case 0:
                     break;
                 default:
@@ -103,8 +121,20 @@ public class PrgEmpleado {
             objArray.eliminarDatos(codigo);
         }
     }
+    
+    public void maxPromedioSueldo(){
+        String mensaje = objArray.maxPromedioEmpleado();
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+    
+    public void minPromedioSueldo(){
+        String mensaje = objArray.minPromedioEmpleado();
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 
     public void ordenarDatos() {
         objArray.ordenarDatos();
     }
+    
+    
 }
