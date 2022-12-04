@@ -55,7 +55,7 @@ public class ArregloEmpleado {
         int pos = buscarPos(codigo);
 
         datos[pos].setNombre(nombre);
-        datos[pos].setCodigo(pos);
+        datos[pos].setSueldo(sueldo);
     }
 
     public void eliminarDatos(long codigo) {
@@ -63,6 +63,7 @@ public class ArregloEmpleado {
         for (int i = pos; i < numEmp - 1; i++) {
             datos[i] = datos[i + 1];
         }
+        numEmp--;
     }
 
     public void ordenarDatos() {

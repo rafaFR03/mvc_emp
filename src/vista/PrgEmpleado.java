@@ -107,7 +107,7 @@ public class PrgEmpleado {
         op = JOptionPane.showConfirmDialog(null, "Esta seguro de modificar los datos de " + objArray.obtenerDatosEmpleado(codigo), "Pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (op == JOptionPane.YES_OPTION) {
             String nombre = JOptionPane.showInputDialog("Ingresa el nuevo nombre");
-            double sueldo = Double.parseDouble("Ingresa el nuevo sueldo: ");
+            double sueldo = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el nuevo sueldo: "));
             objArray.modificarDatos(codigo, nombre, sueldo);
         }
 
